@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[25]:
-
+ddd
 
 # 0. 사용할 패키지 불러오고, 할당받은 GPU 에서 작업 시작
 import tensorflow as tf
@@ -287,7 +287,8 @@ model.compile(optimizer='rmsprop', loss='mse')
 hist = model.fit(x_train, y_train, epochs=50, batch_size=64)
 
 # 5. 학습과정 살펴보기
-get_ipython().magic(u'matplotlib inline')
+# get_ipython().magic(u'matplotlib inline')
+print("show matplot")
 import matplotlib.pyplot as plt
 
 plt.plot(hist.history['loss'])
@@ -295,7 +296,8 @@ plt.ylim(0.0, 1.5)
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train'], loc='upper left')
-plt.show()
+# plt.show()
+plt.savefig('testplot.png')
 
 # 6. 모델 평가하기
 loss = model.evaluate(x_test, y_test, batch_size=32)
