@@ -9,7 +9,7 @@ import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 
 config = tf.ConfigProto()
-config.gpu_options.visible_device_list='1'
+config.gpu_options.visible_device_list='2'
 config.gpu_options.per_process_gpu_memory_fraction = 0.25
 set_session(tf.Session(config=config))
 
@@ -163,7 +163,8 @@ y_test = y_test.reshape(100,)
 w = np.cov(x_train, y_train, bias=1)[0,1] / np.var(x_train)
 b = np.average(y_train) - w * np.average(x_train)
 
-print w, b
+print (w)
+print (b)
 
 # 3. 모델 평가하기
 from sklearn.metrics import mean_squared_error
@@ -197,7 +198,8 @@ model.compile(optimizer='rmsprop', loss='mse')
 # 4. 모델 학습시키기
 hist = model.fit(x_train, y_train, epochs=50, batch_size=64)
 w, b = model.get_weights()
-print w, b
+print(w)
+print(b)
 
 # 5. 학습과정 살펴보기
 get_ipython().magic(u'matplotlib inline')
